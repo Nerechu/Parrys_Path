@@ -554,7 +554,7 @@ MonoBehaviour:
   radioAtaque: 0.5
   capaEnemigos:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   distanciaParry: 1.2
   offsetParry: 0.6
   enemyEnFrente: {fileID: 0}
