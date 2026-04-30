@@ -66,7 +66,7 @@ public class Enemy_ParryDetector
     {
         isParried = true;
 
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Parried);
 
         animator.SetTrigger("Parried");
