@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 599512813}
   - component: {fileID: 599512812}
   m_Layer: 0
-  m_Name: small_green_slime_animations_8
+  m_Name: Ranged_enemie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1908990487}
   - component: {fileID: 1908990489}
   m_Layer: 6
-  m_Name: Bat_enemie
+  m_Name: Melee_enemie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
