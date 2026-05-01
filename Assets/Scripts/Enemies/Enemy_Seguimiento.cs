@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Enemy_Seguimiento
 {
-    private Enemy_Controller controller;
+    private Enemy_Controller_Ranged controller;
     private Animator animator;
     private Rigidbody2D rb;
     private Transform enemyTransform;
@@ -13,12 +11,12 @@ public class Enemy_Seguimiento
     [Header("Movimiento")]
     public float speed = 2f;
     public float distanciaDeteccion = 4f;
-    public float distanciaMinima = 0.6f; // ⭐ Nueva distancia mínima
+    public float distanciaMinima = 0.6f;
 
     [Header("Objetivo")]
     public Transform objetivo;
 
-    public void Initialize(Enemy_Controller controller, Animator animator, Rigidbody2D rb, Transform transform)
+    public void Initialize(Enemy_Controller_Ranged controller, Animator animator, Rigidbody2D rb, Transform transform)
     {
         this.controller = controller;
         this.animator = animator;
@@ -34,22 +32,24 @@ public class Enemy_Seguimiento
         float dist = Vector2.Distance(enemyTransform.position, objetivo.position);
 
         if (dist < distanciaDeteccion)
-            controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Persiguiendo);
+        {
+            controller.CambiarEstado(1); // Persiguiendo
+            animator.SetBool("Persiguiendo", true);
+        }
         else
-            controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Idle);
+        {
+            controller.CambiarEstado(0); // Idle
+            animator.SetBool("Persiguiendo", false);
+        }
     }
 
     public void ActualizarMovimientoFisico()
     {
-        if (controller.estadoActual != Enemy_Controller.EstadoEnemigo.Persiguiendo)
-            return;
-
-        if (objetivo == null)
+        if (controller.GetEstadoActual() != 1) // Persiguiendo
             return;
 
         float dist = Vector2.Distance(enemyTransform.position, objetivo.position);
 
-        // ⭐ Evitar que se meta dentro del player
         if (dist < distanciaMinima)
             return;
 
