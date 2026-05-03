@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 599512813}
   - component: {fileID: 599512812}
   - component: {fileID: 599512815}
+  - component: {fileID: 599512816}
   m_Layer: 0
   m_Name: Ranged_enemie
   m_TagString: Untagged
@@ -440,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 599512811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4853115, y: 3.418576, z: 0}
+  m_LocalPosition: {x: -6.66, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -458,13 +459,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3922bd829c33e92489773f53ddf1fc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estadoActual: 0
-  rangedAttackModule: {fileID: 0}
-  healthModule:
-    vidaMaxima: 5
-    vidaActual: 5
-    destruirAlMorir: 1
-    tiempoAntesDeDestruir: 0.5
+--- !u!50 &599512816
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599512811}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &894640356
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,24 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa5321f363464c4da1a98ab1becff49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estadoActual: 0
-  healthModule:
-    vidaMaxima: 5
-    vidaActual: 5
-    destruirAlMorir: 1
-    tiempoAntesDeDestruir: 0.1
-  seguimientoModule:
-    speed: 2
-    distanciaDeteccion: 4
-    distanciaMinima: 0.6
-    objetivo: {fileID: 894640358}
-  attackModule:
-    attackRange: 0.6
-    attackCooldown: 1
-    damage: 1
-  parryModule:
-    stunDuration: 0.4
-    rosco: {fileID: 392926149}
 --- !u!61 &1908990489
 BoxCollider2D:
   m_ObjectHideFlags: 0
