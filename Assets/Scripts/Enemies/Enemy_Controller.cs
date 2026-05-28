@@ -19,7 +19,8 @@ public class Enemy_Controller : MonoBehaviour
     [Header("Módulos del enemigo")]
     public Enemy_Health healthModule;
     public Enemy_Attack attackModule;
-    public Enemy_ParryDetector parryModule;   // ⭐ Parry
+    public Enemy_ParryDetector parryModule;
+    public Enemy_Seguimiento seguimientoModule;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -37,6 +38,9 @@ public class Enemy_Controller : MonoBehaviour
 
         if (parryModule != null)
             parryModule.Initialize(this, animator, rb);
+
+        if (seguimientoModule != null)
+            seguimientoModule.Initialize(rb, transform);
     }
 
     void Update()
@@ -45,7 +49,10 @@ public class Enemy_Controller : MonoBehaviour
             return;
 
         if (estadoActual == EstadoEnemigo.Parried)
-            return; // stuneado: no atacar
+            return;
+
+        if (estadoActual == EstadoEnemigo.Atacando)
+            return;
 
         if (attackModule != null)
             attackModule.ActualizarAtaque();
@@ -57,9 +64,10 @@ public class Enemy_Controller : MonoBehaviour
             return;
 
         if (estadoActual == EstadoEnemigo.Parried)
-            return; // stuneado: no moverse
+            return;
 
-        // El movimiento ahora lo hace Enemy_Seguimiento (MonoBehaviour)
+        if (estadoActual == EstadoEnemigo.Atacando)
+            return;
     }
 
     public void CambiarEstado(EstadoEnemigo nuevoEstado)

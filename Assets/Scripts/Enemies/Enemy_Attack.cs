@@ -40,7 +40,8 @@ public class Enemy_Attack
 
         if (hit != null)
         {
-            // ⭐ Aquí empieza la preparación del ataque
+            controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Atacando);
+
             controller.parryModule.MostrarRoscoNormal();
 
             animator.SetTrigger("Attack");
@@ -49,15 +50,15 @@ public class Enemy_Attack
         }
     }
 
-    // ⭐ Animation Event: justo antes del ataque real
     public void ActivarVentanaParry()
     {
         controller.parryModule.MostrarRoscoParry();
     }
 
-    // ⭐ Animation Event: primer frame del ataque real
     public void OcultarRosco()
     {
         controller.parryModule.OcultarRosco();
+
+        controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Idle);
     }
 }

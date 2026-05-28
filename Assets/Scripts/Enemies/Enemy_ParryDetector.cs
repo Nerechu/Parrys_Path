@@ -26,28 +26,24 @@ public class Enemy_ParryDetector
             rosco.gameObject.SetActive(false);
     }
 
-    // ⭐ Mostrar rosco blanco (inicio de preparación)
     public void MostrarRoscoNormal()
     {
         if (rosco != null)
             rosco.MostrarRoscoNormal();
     }
 
-    // ⭐ Mostrar rosco verde (ventana de parry)
     public void MostrarRoscoParry()
     {
         if (rosco != null)
             rosco.MostrarRoscoParry();
     }
 
-    // ⭐ Ocultar rosco
     public void OcultarRosco()
     {
         if (rosco != null)
             rosco.OcultarRosco();
     }
 
-    // ⭐ Llamado por el player cuando pulsa parry
     public void IntentarParry(Player_Parry playerParry)
     {
         if (isParried)

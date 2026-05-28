@@ -13,7 +13,6 @@ public class Enemy_ParryRosco : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // ⭐ Mostrar rosco blanco
     public void MostrarRoscoNormal()
     {
         gameObject.SetActive(true);
@@ -21,21 +20,18 @@ public class Enemy_ParryRosco : MonoBehaviour
         animator.Play("Rosco_Blanco");
     }
 
-    // ⭐ Mostrar rosco verde
     public void MostrarRoscoParry()
     {
         ventanaActiva = false;
         animator.Play("Rosco_Verde");
     }
 
-    // ⭐ Ocultar rosco (cierra ventana)
     public void OcultarRosco()
     {
         ventanaActiva = false;
         gameObject.SetActive(false);
     }
 
-    // ⭐ Evento al inicio de la animación verde
     public void ParryRosco()
     {
         ventanaActiva = true;
