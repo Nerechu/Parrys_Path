@@ -348,6 +348,8 @@ GameObject:
   - component: {fileID: 599512812}
   - component: {fileID: 599512815}
   - component: {fileID: 599512816}
+  - component: {fileID: 599512817}
+  - component: {fileID: 599512818}
   m_Layer: 0
   m_Name: Ranged_enemie
   m_TagString: Untagged
@@ -459,6 +461,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3922bd829c33e92489773f53ddf1fc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  estadoActual: 0
+  healthModule:
+    vidaMaxima: 5
+    vidaActual: 5
+    destruirAlMorir: 1
+    tiempoAntesDeDestruir: 0.5
+  rangedAttackModule:
+    distanciaAtaque: 5
+    cooldown: 2
 --- !u!50 &599512816
 Rigidbody2D:
   serializedVersion: 5
@@ -474,7 +485,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -485,7 +496,68 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!61 &599512817
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599512811}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.011547804, y: 0.24988061}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2, y: 0.8}
+    newSize: {x: 0.6666667, y: 0.46666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.72975874, y: 0.49976122}
+  m_EdgeRadius: 0
+--- !u!114 &599512818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599512811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707f631cc5af78498fef7b53cc9e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  distanciaDeteccion: 4
+  distanciaMinima: 0.6
 --- !u!1 &894640356
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +574,7 @@ GameObject:
   - component: {fileID: 894640364}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -703,9 +775,9 @@ MonoBehaviour:
   attackModule:
     attackDuration: 0.25
     attackCooldown: 0.4
-    damageNormal: 1
+    damageNormal: 2
     counterAttackDuration: 0.35
-    damageContraataque: 5
+    damageContraataque: 10
   hitboxAtaque: {fileID: 1815927026}
   radioAtaque: 0.5
   capaEnemigos:
@@ -759,6 +831,7 @@ GameObject:
   - component: {fileID: 1908990490}
   - component: {fileID: 1908990487}
   - component: {fileID: 1908990489}
+  - component: {fileID: 1908990491}
   m_Layer: 6
   m_Name: Melee_enemie
   m_TagString: Untagged
@@ -871,6 +944,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa5321f363464c4da1a98ab1becff49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  estadoActual: 0
+  healthModule:
+    vidaMaxima: 10
+    vidaActual: 10
+    destruirAlMorir: 1
+    tiempoAntesDeDestruir: 0.5
+  attackModule:
+    attackRange: 0.6
+    attackCooldown: 1
+    damage: 1
+  parryModule:
+    stunDuration: 0.4
+    rosco: {fileID: 0}
 --- !u!61 &1908990489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -925,7 +1011,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908990484}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -944,6 +1030,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1908990491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908990484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707f631cc5af78498fef7b53cc9e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  distanciaDeteccion: 4
+  distanciaMinima: 0.6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

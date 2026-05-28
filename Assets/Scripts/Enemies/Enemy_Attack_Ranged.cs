@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Enemy_Attack_Ranged
@@ -33,11 +33,13 @@ public class Enemy_Attack_Ranged
         if (Time.time < tiempoUltimoAtaque + cooldown)
             return;
 
-        controller.CambiarEstado(3); // Atacando
+        // ⭐ Estado Atacando
+        controller.CambiarEstado(Enemy_Controller_Ranged.EstadoEnemigo.Atacando);
         animator.SetTrigger("Attack");
 
         tiempoUltimoAtaque = Time.time;
 
-        controller.CambiarEstado(4); // Cooldown
+        // ⭐ Estado Cooldown
+        controller.CambiarEstado(Enemy_Controller_Ranged.EstadoEnemigo.Cooldown);
     }
 }

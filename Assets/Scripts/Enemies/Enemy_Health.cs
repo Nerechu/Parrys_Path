@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
 public class Enemy_Health
 {
-    private Enemy_Controller controller;
+    private Enemy_Controller controllerMele;
+    private Enemy_Controller_Ranged controllerRanged;
     private Animator animator;
 
     [Header("Vida del enemigo")]
@@ -16,18 +16,27 @@ public class Enemy_Health
     public bool destruirAlMorir = true;
     public float tiempoAntesDeDestruir = 0.5f;
 
-    public void Initialize(Enemy_Controller controller, Animator animator)
+    // 👉 Para MELEE
+    public void Initialize(Enemy_Controller controllerMele, Animator animator)
     {
-        this.controller = controller;
+        this.controllerMele = controllerMele;
         this.animator = animator;
         vidaActual = vidaMaxima;
     }
 
-    public void RecibirDa�o(int cantidad)
+    // 👉 Para RANGED
+    public void Initialize(Enemy_Controller_Ranged controllerRanged, Animator animator)
+    {
+        this.controllerRanged = controllerRanged;
+        this.animator = animator;
+        vidaActual = vidaMaxima;
+    }
+
+    public void RecibirDaño(int cantidad)
     {
         vidaActual -= cantidad;
 
-        Debug.Log("Enemigo recibe da�o: " + cantidad + " | Vida restante: " + vidaActual);
+        Debug.Log("Enemigo recibe daño: " + cantidad + " | Vida restante: " + vidaActual);
 
         if (vidaActual <= 0)
         {
@@ -47,15 +56,29 @@ public class Enemy_Health
         if (animator != null)
             animator.SetTrigger("Death");
 
-        controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Muerto);
+        // 👉 Solo toca al controller que exista
 
-        if (destruirAlMorir)
-            controller.StartCoroutine(DestruirDespues());
+        if (controllerMele != null)
+        {
+            controllerMele.CambiarEstado(Enemy_Controller.EstadoEnemigo.Muerto);
+
+            if (destruirAlMorir)
+                controllerMele.StartCoroutine(DestruirDespues(controllerMele.gameObject));
+        }
+
+        if (controllerRanged != null)
+        {
+            // ⭐ Aquí estaba el error: quitamos el (int)
+            controllerRanged.CambiarEstado(Enemy_Controller_Ranged.EstadoEnemigo.Muerto);
+
+            if (destruirAlMorir)
+                controllerRanged.StartCoroutine(DestruirDespues(controllerRanged.gameObject));
+        }
     }
 
-    IEnumerator DestruirDespues()
+    IEnumerator DestruirDespues(GameObject go)
     {
         yield return new WaitForSeconds(tiempoAntesDeDestruir);
-        GameObject.Destroy(controller.gameObject);
+        GameObject.Destroy(go);
     }
 }
