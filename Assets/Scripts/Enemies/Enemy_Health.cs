@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy_Health
 {
     private Enemy_Controller controllerMele;
-    private Enemy_Controller_Ranged controllerRanged;
     private Animator animator;
 
     [Header("Vida del enemigo")]
@@ -20,14 +19,6 @@ public class Enemy_Health
     public void Initialize(Enemy_Controller controllerMele, Animator animator)
     {
         this.controllerMele = controllerMele;
-        this.animator = animator;
-        vidaActual = vidaMaxima;
-    }
-
-    // 👉 Para RANGED
-    public void Initialize(Enemy_Controller_Ranged controllerRanged, Animator animator)
-    {
-        this.controllerRanged = controllerRanged;
         this.animator = animator;
         vidaActual = vidaMaxima;
     }
@@ -64,15 +55,6 @@ public class Enemy_Health
 
             if (destruirAlMorir)
                 controllerMele.StartCoroutine(DestruirDespues(controllerMele.gameObject));
-        }
-
-        if (controllerRanged != null)
-        {
-            // ⭐ Aquí estaba el error: quitamos el (int)
-            controllerRanged.CambiarEstado(Enemy_Controller_Ranged.EstadoEnemigo.Muerto);
-
-            if (destruirAlMorir)
-                controllerRanged.StartCoroutine(DestruirDespues(controllerRanged.gameObject));
         }
     }
 
