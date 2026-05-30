@@ -15,7 +15,6 @@ public class Enemy_Health
     public bool destruirAlMorir = true;
     public float tiempoAntesDeDestruir = 0.5f;
 
-    // 👉 Para MELEE
     public void Initialize(Enemy_Controller controllerMele, Animator animator)
     {
         this.controllerMele = controllerMele;
@@ -46,8 +45,6 @@ public class Enemy_Health
 
         if (animator != null)
             animator.SetTrigger("Death");
-
-        // 👉 Solo toca al controller que exista
 
         if (controllerMele != null)
         {

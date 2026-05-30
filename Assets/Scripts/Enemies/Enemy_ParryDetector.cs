@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[System.Serializable]
-public class Enemy_ParryDetector
+public class Enemy_ParryDetector : MonoBehaviour
 {
     private Enemy_Controller controller;
     private Animator animator;
@@ -28,20 +27,17 @@ public class Enemy_ParryDetector
 
     public void MostrarRoscoNormal()
     {
-        if (rosco != null)
-            rosco.MostrarRoscoNormal();
+        rosco?.MostrarRoscoNormal();
     }
 
     public void MostrarRoscoParry()
     {
-        if (rosco != null)
-            rosco.MostrarRoscoParry();
+        rosco?.MostrarRoscoParry();
     }
 
     public void OcultarRosco()
     {
-        if (rosco != null)
-            rosco.OcultarRosco();
+        rosco?.OcultarRosco();
     }
 
     public void IntentarParry(Player_Parry playerParry)

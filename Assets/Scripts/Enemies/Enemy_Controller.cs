@@ -48,12 +48,6 @@ public class Enemy_Controller : MonoBehaviour
         if (estadoActual == EstadoEnemigo.Muerto)
             return;
 
-        if (estadoActual == EstadoEnemigo.Parried)
-            return;
-
-        if (estadoActual == EstadoEnemigo.Atacando)
-            return;
-
         if (attackModule != null)
             attackModule.ActualizarAtaque();
     }
@@ -63,10 +57,10 @@ public class Enemy_Controller : MonoBehaviour
         if (estadoActual == EstadoEnemigo.Muerto)
             return;
 
-        if (estadoActual == EstadoEnemigo.Parried)
+        if (estadoActual == EstadoEnemigo.Atacando)
             return;
 
-        if (estadoActual == EstadoEnemigo.Atacando)
+        if (estadoActual == EstadoEnemigo.Parried)
             return;
     }
 

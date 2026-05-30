@@ -6,6 +6,7 @@ public class Enemy_Attack
     private Enemy_Controller controller;
     private Animator animator;
     private Transform enemyTransform;
+    private Transform player;
 
     [Header("Ataque")]
     public float attackRange = 0.6f;
@@ -19,11 +20,18 @@ public class Enemy_Attack
         this.controller = controller;
         this.animator = animator;
         this.enemyTransform = transform;
+
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p != null)
+            player = p.transform;
     }
 
     public void ActualizarAtaque()
     {
         if (controller.estadoActual == Enemy_Controller.EstadoEnemigo.Muerto)
+            return;
+
+        if (player == null)
             return;
 
         if (cooldownTimer > 0)
@@ -32,14 +40,12 @@ public class Enemy_Attack
             return;
         }
 
-        Collider2D hit = Physics2D.OverlapCircle(
-            enemyTransform.position,
-            attackRange,
-            LayerMask.GetMask("Player")
-        );
+        float dist = Vector2.Distance(enemyTransform.position, player.position);
 
-        if (hit != null)
+        if (dist <= attackRange)
         {
+            Debug.Log("ATAQUE ACTIVADO");
+
             controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Atacando);
 
             controller.parryModule.MostrarRoscoNormal();
@@ -55,10 +61,9 @@ public class Enemy_Attack
         controller.parryModule.MostrarRoscoParry();
     }
 
-    public void OcultarRosco()
+    public void GolpeReal()
     {
         controller.parryModule.OcultarRosco();
-
         controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Idle);
     }
 }
