@@ -11,7 +11,7 @@ public class Player_Move
     private Vector2 direccion;
 
     [Header("Dash")]
-    public float dashSpeed = 12f;
+    public float dashSpeed = 15f;
     public float dashDuration = 0.15f;
     public float dashCooldown = 0.5f;
     public bool isInvulnerable = false;
@@ -93,6 +93,12 @@ public class Player_Move
         isDashing = true;
         isInvulnerable = true;
 
+        // 🔥 MAGIA DEL AGUA: Avisamos al script de salud que estamos "volando" sobre el agua
+        if (controller.GetComponent<SaludJugador>() != null)
+        {
+            controller.GetComponent<SaludJugador>().estaSaltando = true;
+        }
+
         dashTime = dashDuration;
         dashCooldownTimer = dashCooldown;
 
@@ -118,5 +124,11 @@ public class Player_Move
 
         isDashing = false;
         isInvulnerable = false;
+
+        // 🔥 MAGIA DEL AGUA: El dash termina, el jugador toca el suelo. El agua vuelve a ser mortal.
+        if (controller.GetComponent<SaludJugador>() != null)
+        {
+            controller.GetComponent<SaludJugador>().estaSaltando = false;
+        }
     }
 }

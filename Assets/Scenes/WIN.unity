@@ -357,50 +357,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487217291}
   m_CullTransparentMesh: 1
---- !u!1 &838982119
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 838982120}
-  - component: {fileID: 838982121}
-  m_Layer: 0
-  m_Name: ManejadorEscenas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &838982120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838982119}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1041.1036, y: 529.9917, z: -4.711138}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &838982121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838982119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4165f725541a6bb48a875b814c983dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &931521040
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,8 +668,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 838982121}
-        m_TargetAssemblyTypeName: ManejadorEscenasFin, Assembly-CSharp
+      - m_Target: {fileID: 1593010455}
+        m_TargetAssemblyTypeName: ControladorGameOver, Assembly-CSharp
         m_MethodName: ReintentarJuego
         m_Mode: 1
         m_Arguments:
@@ -821,7 +777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4144336939780473603, guid: 99af3433b03f119489f5e17d387de753, type: 3}
+  m_Sprite: {fileID: -645773800, guid: 6f7b121ee128805418c345aa34fae040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -922,9 +878,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 838982121}
-        m_TargetAssemblyTypeName: ManejadorEscenasFin, Assembly-CSharp
-        m_MethodName: VolverAlMenuPrincipal
+      - m_Target: {fileID: 1593010455}
+        m_TargetAssemblyTypeName: ControladorGameOver, Assembly-CSharp
+        m_MethodName: VolverAlMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1026,7 +982,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2004983245}
   - component: {fileID: 2004983244}
-  - component: {fileID: 2004983243}
   - component: {fileID: 2004983246}
   m_Layer: 0
   m_Name: EventSystem
@@ -1035,18 +990,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2004983243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004983242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2004983244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,4 +1048,3 @@ SceneRoots:
   - {fileID: 339752625}
   - {fileID: 2004983245}
   - {fileID: 1593010456}
-  - {fileID: 838982120}

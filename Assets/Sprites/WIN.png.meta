@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 80f61f88771a9d64ba3befd4a358f180
+guid: 6f7b121ee128805418c345aa34fae040
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rocks_0
+      name: WIN_0
       rect:
         serializedVersion: 2
-        x: 50
-        y: 18
-        width: 12
-        height: 12
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8e850cf851921a4598d88f679d60267
-      internalID: -315224363
+      spriteID: c4d1b089a36c2a94fb272f4954668942
+      internalID: -645773800
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 685dda8c418a97943bb6cfe14bd1fc05
+    spriteID: 0a17a00f7500e264cb733826f5d49e94
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rocks_0: -315224363
+      WIN_0: -645773800
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
