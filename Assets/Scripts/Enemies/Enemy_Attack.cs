@@ -48,7 +48,7 @@ public class Enemy_Attack
 
             controller.CambiarEstado(Enemy_Controller.EstadoEnemigo.Atacando);
 
-            controller.parryModule.MostrarRoscoNormal();
+            controller.parryModule?.MostrarRoscoNormal();
 
             animator.SetTrigger("Attack");
 
