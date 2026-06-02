@@ -16,6 +16,9 @@ public class Player_Move
     public float dashCooldown = 0.5f;
     public bool isInvulnerable = false;
 
+    [Header("Sonidos")]
+    public AudioClip sonidoDash;
+
     private bool isDashing = false;
     private float dashTime;
     private float dashCooldownTimer;
@@ -97,6 +100,12 @@ public class Player_Move
         if (controller.GetComponent<SaludJugador>() != null)
         {
             controller.GetComponent<SaludJugador>().estaSaltando = true;
+        }
+                //sonido
+        if (sonidoDash != null && controller.GetComponent<AudioSource>() != null)
+        {
+          
+            controller.GetComponent<AudioSource>().PlayOneShot(sonidoDash);
         }
 
         dashTime = dashDuration;
